@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -19,7 +22,8 @@ public class Person {
     private String contactDetails;
     private String deliveryAddress;
 
-
+    @OneToMany (mappedBy = "person")
+    private List<Order> orders = new ArrayList<>();
 
     public Person(String name, String contactDetails, String deliveryAddress) {
         this.name = name;
